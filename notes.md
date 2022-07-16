@@ -1,15 +1,10 @@
 # notes
 
 ## Entities
-- User
-  - Authentication and Login
-  - fields:
-    - name
-    - password
 - Account
+  - Authentication
   - Validate account never below zero
   - fields:
-    - user_id
     - account_number
     - balance
 - Transactions
