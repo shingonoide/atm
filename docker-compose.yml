@@ -15,3 +15,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    environment:
+      ATM_DATABASE_PASSWORD: password
+      ATM_DATABASE_USERNAME: postgres
+      ATM_DATABASE_HOST: db
