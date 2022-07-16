@@ -9,7 +9,6 @@
     - balance
 - Transactions
   - fields:
-    - transaction_id
     - account_id
     - type (DEPOSIT,WITHDRAW)
     - amount
