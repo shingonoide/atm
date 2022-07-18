@@ -19,19 +19,19 @@
 # Tranfer
 transaction:
   SELECT ... FOR UPDATE
-  INSERT INTO transactions (transaction_id, account_id, type, value, description, created_at) VALUES (id, 1, 'WITHDRAW', 10, 90, 'Tranfer to 2', now())
-  INSERT INTO transactions (transaction_id, account_id, type, value, description, created_at) VALUES (id, 2, 'DEPOSIT', 10, 1110, 'Tranfer from 1', now())
-  INSERT INTO transactions (transaction_id, account_id, type, value, description, created_at) VALUES (id, 1, 'WITHDRAW', 5, 85, 'Tranfer Fee', now())
+  INSERT INTO transactions (transaction_id, account_id, type, value, description, created_at) VALUES (id, 1, 'WITHDRAW', 10, 'Tranfer to 2', now())
+  INSERT INTO transactions (transaction_id, account_id, type, value, description, created_at) VALUES (id, 2, 'DEPOSIT', 10, 'Tranfer from 1', now())
+  INSERT INTO transactions (transaction_id, account_id, type, value, description, created_at) VALUES (id, 1, 'WITHDRAW', 5, 'Tranfer Fee', now())
 end
 
 DEPOSIT
 transaction:
-  INSERT INTO transactions (transaction_id, account_id, type, value, description, created_at) VALUES (id, 1, 'DEPOSIT', 10, 95, '', now())
+  INSERT INTO transactions (transaction_id, account_id, type, value, description, created_at) VALUES (id, 1, 'DEPOSIT', 10, '', now())
 end
 
 -- WITHDRAW
 transaction:
-  INSERT INTO transactions (transaction_id, account_id, type, value, description, created_at) VALUES (id, 1, 'WITHDRAW', 10, 85, '', now())
+  INSERT INTO transactions (transaction_id, account_id, type, value, description, created_at) VALUES (id, 1, 'WITHDRAW', 10, '', now())
 end
 ```
 
