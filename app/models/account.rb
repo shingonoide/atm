@@ -57,22 +57,25 @@ class Account < ApplicationRecord
     }
   end
 
-  def transfer_to_account(amount, account_id)
+  def transfer_to_account(amount, to_account)
     fee = calculate_transfer_fee(amount)
-    acc = self.find(account_id)
-    if amount <= fee
-      raise AccountError, "Cannot transfer funds (account id: #{id}, to account: #{acc.id} fee: #{fee}, amount: #{amount}, balance: #{balance})."
+    to_acc = Account.find_by_account_number(to_account)
+    if to_acc.nil?
+      raise AccountError, "Account #{to_account} not found"
     end
-    transfer_amount = amount - fee
+    if amount.to_d <= fee
+      raise AccountError, "Cannot transfer funds (account id: #{id}, to account: #{to_acc.id} fee: #{fee}, amount: #{amount}, balance: #{balance})."
+    end
+    transfer_amount = amount.to_d - fee
     with_lock {
-      self.withdraws.create(amount: fee)
-      self.withdraws.create(amount: transfer_amount)
-      acc.deposits.create(amount: transfer_amount)
+      withdraws.create(amount: fee)
+      withdraws.create(amount: transfer_amount)
+      to_acc.deposits.create(amount: transfer_amount)
     }
   end
 
   def calculate_transfer_fee(amount)
-    return 5
+    return 5.to_d
   end
 
 end
