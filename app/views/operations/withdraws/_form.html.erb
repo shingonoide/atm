@@ -1,0 +1,26 @@
+
+<%= form_with scope: "withdraw", url: "/operations/withdraws" do |form| %>
+  <% if withdraw.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(withdraw.errors.count, "error") %> prohibited this withdraw from being saved:</h2>
+
+      <ul>
+        <% withdraw.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :account_number, style: "display: block" %>
+    <%= form.number_field :account_number %>
+  </div>
+  
+  <div>
+    <%= form.label :amount, style: "display: block" %>
+    <%= form.number_field :amount %>
+  </div>
+  <div>
+    <%= form.submit "Withdraw" %>
+  </div> 
+<% end %>

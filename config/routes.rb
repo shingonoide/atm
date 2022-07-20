@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :operations do
     resources :deposits, only: [:show, :new, :create]
+    resources :withdraws, only: [:show, :new, :create]
   end
 
   devise_for :accounts
