@@ -1,0 +1,9 @@
+<h1>Deposit #<%= @deposit.id %></h1>
+
+<p>Account: <%= @deposit.account.account_number %></p>
+<p>Amount: <%= @deposit.amount %></p>
+<p>Current Balance: <%= @deposit.account.balance.to_s %> </p>
+
+<div>
+  <%= link_to "Back to operations", operations_path %>
+</div>
