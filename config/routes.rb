@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  # get 'operations/deposit'
+  # post 'operations/deposit_create'
+  # get 'operations/withdraw'
+  # get 'operations/transfer'
   get 'operations', to: 'operations#index'
 
   namespace :operations do
-    resources :deposits
+    resources :deposits, only: [:show, :new, :create]
   end
 
   devise_for :accounts
