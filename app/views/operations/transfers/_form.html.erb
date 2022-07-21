@@ -11,7 +11,7 @@
   
   <div>
     <%= form.label :amount, style: "display: block" %>
-    <%= form.number_field :amount %>
+    <%= form.number_field :amount, step: 0.01 %>
   </div>
   <div>
     <%= form.submit "Transfer" %>
