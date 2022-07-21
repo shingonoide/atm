@@ -1,5 +1,16 @@
 
 <%= form_with scope: "transfer", url: "/operations/transfers" do |form| %>
+  <% if transfer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(transfer.errors.count, "error") %> prohibited this deposit from being saved:</h2>
+
+      <ul>
+        <% transfer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div>
     <%= form.label :account_number, style: "display: block" %>
     <%= form.number_field :account_number %>

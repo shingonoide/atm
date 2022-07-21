@@ -1,5 +1,9 @@
 class Operations::TransfersController < ApplicationController
 
+  def new
+    @transfer = Transfer.new    
+  end
+
   def create
     @transfer = Transfer.new(transfer_params)
 
