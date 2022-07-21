@@ -4,6 +4,7 @@ class Transfer < Transaction
   validates_presence_of :to_account_number
   validates :amount, numericality: { greater_than_or_equal_to: 0.to_d }
   validate :amount_greater_than_fee
+  validate :is_not_same_account
 
   def update_account_balance
     transfer_amount = amount - fee
@@ -25,7 +26,7 @@ class Transfer < Transaction
 
   def to_account_number=(account_number)
     @to_account_number = Account.find_by_account_number(account_number)
-    errors.add(:to_account_number, "Destination account not found") if @to_account_number.nil?
+    errors.add(:to_account_number, "not found") if @to_account_number.nil?
     @to_account_number
   end
 
@@ -34,6 +35,10 @@ class Transfer < Transaction
   end
 
   def amount_greater_than_fee
-    errors.add(:amount, "Amount should be gretter than fee") if fee >= self.amount.to_d
+    errors.add(:amount, "should be gretter than fee") if fee >= self.amount.to_d
+  end
+  
+  def is_not_same_account
+    errors.add(:to_account_number, "should be another account") if account === to_account_number
   end
 end
