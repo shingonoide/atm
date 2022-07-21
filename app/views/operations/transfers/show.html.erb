@@ -1,0 +1,9 @@
+<h1>Withdraw #<%= @withdraw.id %></h1>
+
+<p>Account: <%= @withdraw.account.account_number %></p>
+<p>Amount: <%= @withdraw.amount %></p>
+<p>Current Balance: <%= @withdraw.account.balance.to_s %> </p>
+
+<div>
+  <%= link_to "Back to operations", operations_path %>
+</div>

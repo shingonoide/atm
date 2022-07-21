@@ -1,0 +1,19 @@
+
+<%= form_with scope: "transfer", url: "/operations/transfers" do |form| %>
+  <div>
+    <%= form.label :account_number, style: "display: block" %>
+    <%= form.number_field :account_number %>
+  </div>
+  <div>
+    <%= form.label :to_account_number, style: "display: block" %>
+    <%= form.number_field :to_account_number %>
+  </div>
+  
+  <div>
+    <%= form.label :amount, style: "display: block" %>
+    <%= form.number_field :amount %>
+  </div>
+  <div>
+    <%= form.submit "Transfer" %>
+  </div> 
+<% end %>
