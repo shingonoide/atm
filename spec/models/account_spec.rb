@@ -1,9 +1,7 @@
 
-# encoding: UTF-8
-# frozen_string_literal: true
-require('rails_helper')
+require 'rails_helper'
 
-describe Account do
+RSpec.describe Account do
   subject { Account.create(account_number: 1234, password: '123456') }
 
   describe "#balance" do
