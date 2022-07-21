@@ -9,3 +9,9 @@ rspec:
 
 generate:
 	@docker compose run --rm web rails g 
+
+start:
+	@docker compose up
+
+startd:
+	@docker compoese up -d
