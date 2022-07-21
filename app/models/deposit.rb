@@ -1,5 +1,6 @@
 class Deposit < Transaction
   before_save :update_account_balance
+  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   def update_account_balance
     account.plus_funds(amount)
