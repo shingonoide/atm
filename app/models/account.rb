@@ -8,6 +8,8 @@ class Account < ApplicationRecord
   has_many :deposits
   has_many :withdraws
 
+  validates_uniqueness_of :account_number
+
   ZERO = 0.to_d
 
   validates :balance, numericality: { greater_than_or_equal_to: ZERO }
