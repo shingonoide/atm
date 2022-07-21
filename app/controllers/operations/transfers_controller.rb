@@ -1,10 +1,10 @@
 class Operations::TransfersController < ApplicationController
 
   def create
-    @account = Account.find_by_account_number(transfer_params[:account_number])
+    @transfer = Transfer.new(transfer_params)
 
     respond_to do |format|
-      if @account.transfer_to_account(transfer_params[:amount], transfer_params[:to_account_number])
+      if @transfer.save
         format.html { redirect_to new_operations_transfer_url, notice: "Transfer was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
