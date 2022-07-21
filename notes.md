@@ -1,8 +1,8 @@
-# notes
+# Application Notes
 
-# Requirements
+## Requirements
 
-## The Client can do:
+### The Client can do:
 - [ ] Register, edit and close your account
 - [ ] Make Deposits
 - [ ] Make Withdraws
@@ -10,11 +10,11 @@
 - [ ] Request for account balance
 - [ ] Request for account statement filtered by initial and end date.
 
-## Rules:
-- The account can't be destroyed
-- To request withdrawal and transfers user must be authenticated
-- The account balance should never be a negative value
-- Transfer fee rules
+### Rules:
+- [ ] The account can't be destroyed
+- [ ] To request withdrawal and transfers user must be authenticated
+- [ ] The account balance should never be a negative value
+- [ ] Transfer fee rules
   - Monday to Friday between 9 to 18 hours the is 5 Reais per transfer
   - Outside that time the fee is 7 Reais
   - More than 1000 Reais additional fee of 10 Reais
