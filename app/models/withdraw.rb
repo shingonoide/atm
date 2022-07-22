@@ -6,7 +6,6 @@ class Withdraw < Transaction
   end
 
   def account_number=(account_number)
-    account_by_number = Account.find_by_account_number(account_number)
-    self.account = account_by_number unless account_by_number.nil?
+    self.account = Account.find_by(account_number: account_number)
   end
 end
