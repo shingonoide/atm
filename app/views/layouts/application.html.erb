@@ -13,6 +13,9 @@
   <body>
     <% if account_signed_in? %>
       <%= link_to "Logout", destroy_account_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      Account Number: <%= current_account.account_number %>
+      <%=link_to "edit", edit_account_registration_path %>
+      Account Balance: <%= current_account.balance.to_s %>
     <% end %>
     <% flash.each do |type, msg| %>
       <div>
