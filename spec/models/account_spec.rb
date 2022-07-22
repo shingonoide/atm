@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe Account do
   fixtures :accounts
-  subject { Account.find_by(account_number: 1234) }
+  subject { Account.first }
 
   describe "#balance" do
     it { expect(subject.balance).to eql 0 }
@@ -24,13 +24,12 @@ RSpec.describe Account do
 
   describe 'double operation' do
     let(:strike_volume) { '10.0'.to_d }
-    let(:account) { Account.find_by(account_number: 1234) }
 
     it 'expect double operation funds' do
       expect do
-        account.plus_funds(strike_volume)
-        account.sub_funds(strike_volume)
-      end.to_not(change { account.balance })
+        subject.plus_funds(strike_volume)
+        subject.sub_funds(strike_volume)
+      end.to_not(change { subject.balance })
     end
   end
 

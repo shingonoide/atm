@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Deposit, type: :model do
   fixtures :accounts
-  subject { Deposit.new(account_number: 1234, amount: 1) }
+  subject { a=accounts(:account1); Deposit.new(account: a, amount: 1) }
   
   it "is valid with valid attributes" do
     expect(subject).to be_valid

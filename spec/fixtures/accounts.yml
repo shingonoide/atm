@@ -1,3 +1,4 @@
 account1:
-  account_number: 1234
+  encrypted_password: 123456
+account2:
   encrypted_password: 123456
