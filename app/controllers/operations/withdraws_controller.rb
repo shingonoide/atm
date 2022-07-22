@@ -1,9 +1,7 @@
 class Operations::WithdrawsController < ApplicationController
   before_action :authenticate_account!
   before_action :set_withdraw, only: %i[ show ]
-
-  def show
-  end
+  # skip_before_action :verify_authenticity_token
 
   def new
     @withdraw = Withdraw.new
