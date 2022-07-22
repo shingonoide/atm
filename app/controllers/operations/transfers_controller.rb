@@ -1,4 +1,5 @@
 class Operations::TransfersController < ApplicationController
+  before_action :authenticate_account!
 
   def new
     @transfer = Transfer.new    
