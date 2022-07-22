@@ -1,5 +1,6 @@
 class Withdraw < Transaction
   before_save :update_account_balance
+  validates :amount, presence: true
 
   def update_account_balance
     account.sub_funds(amount)
