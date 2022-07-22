@@ -69,3 +69,5 @@ group :test do
 end
 
 gem "devise", "~> 4.8"
+
+gem "acts_as_paranoid", "~> 0.8.1"
