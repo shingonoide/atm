@@ -5,9 +5,9 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :registerable, :validatable
   self.primary_key = :account_number
   
-  has_many :transactions
-  has_many :deposits
-  has_many :withdraws
+  has_many :transactions, foreign_key: :account_account_number
+  has_many :deposits, foreign_key: :account_account_number
+  has_many :withdraws, foreign_key: :account_account_number
 
   validates_uniqueness_of :account_number
 
