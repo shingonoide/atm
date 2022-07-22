@@ -20,6 +20,6 @@ class Operations::TransfersController < ApplicationController
 
   private
     def transfer_params
-      params.require(:transfer).permit(:account_number, :to_account_number, :amount)
+      params.require(:transfer).permit(:to_account_number, :amount).with_defaults(account: current_account)
     end
 end

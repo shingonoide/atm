@@ -30,6 +30,6 @@ class Operations::WithdrawsController < ApplicationController
     end
 
     def withdraw_params
-      params.require(:withdraw).permit(:account_number, :amount)
+      params.require(:withdraw).permit(:amount).with_defaults(account: current_account)
     end
 end
