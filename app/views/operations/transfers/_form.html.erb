@@ -13,7 +13,7 @@
   <% end %>
   <div>
     <%= form.label :account_number, style: "display: block" %>
-    <%= form.number_field :account_number %>
+    <%= form.number_field :account_number, value: current_account.account_number, disabled: true %>
   </div>
   <div>
     <%= form.label :to_account_number, style: "display: block" %>
