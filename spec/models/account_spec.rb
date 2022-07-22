@@ -33,4 +33,10 @@ RSpec.describe Account do
     end
   end
 
+  describe "closes account" do
+    it "should soft delete the account" do
+      expect{subject.destroy}.to change { Account.only_deleted.count }
+    end
+  end
+
 end
