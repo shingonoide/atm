@@ -10,19 +10,19 @@ RSpec.describe "Operations::Withdraws", type: :request do
     it "returns http success" do
       @account.deposits.create(amount: 1)
       withdraw = @account.withdraws.create(amount: 1)
-      get "/operations/withdraws/#{withdraw.id}"
+      get operations_withdraw_url(withdraw)
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET /new" do
     it "returns http success" do
-      get "/operations/withdraws/new"
+      get new_operations_withdraw_url
       expect(response).to have_http_status(:success)
     end
     it "returns http redirect" do
       sign_out(@account)
-      get "/operations/withdraws/new"
+      get new_operations_withdraw_url
       expect(response).to have_http_status(:redirect)
     end
   end
@@ -30,7 +30,7 @@ RSpec.describe "Operations::Withdraws", type: :request do
   describe "POST /create" do
     it "returns http redirect" do
       @account.deposits.create(amount: 5)
-      post "/operations/withdraws", params: { withdraw: { account_number: @account.account_number, amount: 5}}
+      post operations_withdraws_url, params: { withdraw: { amount: 5}}
       expect(response).to have_http_status(:redirect)
     end
   end
