@@ -3,6 +3,7 @@ class Account < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :validatable
+  self.primary_key = :account_number
   
   has_many :transactions
   has_many :deposits

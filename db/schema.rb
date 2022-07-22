@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_21_190007) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_16_062844) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accounts", force: :cascade do |t|
-    t.integer "account_number", null: false
+  create_table "accounts", primary_key: "account_number", force: :cascade do |t|
     t.string "encrypted_password", null: false
     t.decimal "balance", default: "0.0", null: false
     t.datetime "created_at", null: false
@@ -24,12 +23,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_190007) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.bigint "account_id", null: false
+    t.bigint "account_account_number", null: false
     t.string "type"
-    t.decimal "amount", null: false
+    t.decimal "amount"
     t.datetime "created_at", null: false
-    t.index ["account_id"], name: "index_transactions_on_account_id"
   end
 
-  add_foreign_key "transactions", "accounts"
+  add_foreign_key "transactions", "accounts", column: "account_account_number", primary_key: "account_number"
 end

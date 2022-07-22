@@ -2,11 +2,11 @@
 
 class DeviseCreateAccounts < ActiveRecord::Migration[7.0]
   def change
-    create_table :accounts do |t|
+    create_table :accounts, id: false do |t|
       ## Database authenticatable
-      t.integer :account_number,    null: false
+      t.primary_key :account_number,    null: false
       t.string :encrypted_password, null: false
-      t.integer :balance,           null: false, default: 0
+      t.decimal :balance,           null: false, default: 0
 
       t.timestamps null: false
     end
