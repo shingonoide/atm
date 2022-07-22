@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_16_062844) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_22_223017) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_16_062844) do
     t.decimal "balance", default: "0.0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["account_number"], name: "index_accounts_on_account_number", unique: true
+    t.index ["deleted_at"], name: "index_accounts_on_deleted_at"
   end
 
   create_table "transactions", force: :cascade do |t|
