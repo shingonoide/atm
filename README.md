@@ -42,7 +42,7 @@ Things you may want to cover:
 - [ ] Request for account statement filtered by initial and end date.
 
 ### Rules:
-- [ ] The account can't be destroyed
+- [x] The account can't be destroyed
 - [x] To request withdrawal and transfers user must be authenticated
 - [x] The account balance should never be a negative value
 - [ ] Transfer fee rules
