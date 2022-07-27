@@ -1,7 +1,11 @@
 # syntax=docker/dockerfile:1
 FROM ruby:3.1.2
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
-    && apt-get update -qq && apt-get install -y nodejs postgresql-client \
+RUN apt-get install -y gpg \
+    && curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+    && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null \
+    && echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && apt-get update -qq && apt-get install -y nodejs postgresql-client yarn \
+    # && apt-get install -y gcc g++ make # uncomment to install gcc compilers \
     && npm install -g heroku && apt-get clean autoclean && apt-get autoremove --yes \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/
 WORKDIR /myapp
