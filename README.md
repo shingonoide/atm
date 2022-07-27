@@ -45,7 +45,7 @@ Things you may want to cover:
 - [x] The account can't be destroyed
 - [x] To request withdrawal and transfers user must be authenticated
 - [x] The account balance should never be a negative value
-- [ ] Transfer fee rules
+- [x] Transfer fee rules
   - Monday to Friday between 9 to 18 hours the is 5 Reais per transfer
   - Outside that time the fee is 7 Reais
   - More than 1000 Reais additional fee of 10 Reais

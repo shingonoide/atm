@@ -15,8 +15,22 @@ class Transfer < Transaction
     }
   end
 
-  def fee
-    return 5.to_d
+  def fee(time=Time.now.in_time_zone)
+    fee = 0.to_d
+    if fee_time_in_range?(time)
+      fee = 5.to_d
+    else
+      fee = 7.to_d
+    end
+    fee += 10.to_d if self.amount.to_d > 1000.to_d
+    return fee 
+  end
+
+  def fee_time_in_range?(time)
+    time.wday.between?(1,5) && time.between?(
+      time.in_time_zone.beginning_of_day + 9.hours,
+      time.in_time_zone.beginning_of_day + 18.hours,
+    )
   end
 
   def account_number=(account_number)
