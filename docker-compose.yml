@@ -9,6 +9,7 @@ services:
   web:
     build: .
     command: bash -c "bundle exec foreman start -f Procfile.dev"
+    tty: true
     volumes:
       - .:/myapp
     ports:
