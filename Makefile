@@ -8,10 +8,16 @@ rspec:
 	@docker compose run --rm web rspec -f doc
 
 generate:
-	@docker compose run --rm web rails g 
+	@docker compose run --rm web rails g ${args}
 
-start:
+up:
 	@docker compose up
 
-startd:
-	@docker compoese up -d
+upd:
+	@docker compose up -d
+
+down:
+	@docker compose down
+
+rails:
+	@docker compose run --rm --tty web rails $@
