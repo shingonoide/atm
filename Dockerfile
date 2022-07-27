@@ -1,6 +1,9 @@
 # syntax=docker/dockerfile:1
 FROM ruby:3.1.2
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+    && apt-get update -qq && apt-get install -y nodejs postgresql-client \
+    && npm install -g heroku && apt-get clean autoclean && apt-get autoremove --yes \
+    && rm -rf /var/lib/{apt,dpkg,cache,log}/
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
