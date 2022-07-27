@@ -73,3 +73,5 @@ gem "devise", "~> 4.8"
 gem "acts_as_paranoid", "~> 0.8.1"
 
 gem "tailwindcss-rails", "~> 2.0"
+
+gem "foreman", "~> 0.87.2", :group => :development
