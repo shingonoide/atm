@@ -2,3 +2,6 @@ account1:
   encrypted_password: 123456
 account2:
   encrypted_password: 123456
+account_with_balance:
+  balance: 5000
+  encrypted_password: 123456
