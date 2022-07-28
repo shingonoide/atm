@@ -4,11 +4,8 @@ build:
 console:
 	@docker compose run --rm web rails console
 
-rspec:
+test:
 	@docker compose run --rm web rspec -f doc
-
-generate:
-	@docker compose run --rm web rails g ${args}
 
 up:
 	@docker compose up
@@ -19,5 +16,5 @@ upd:
 down:
 	@docker compose down
 
-rails:
-	@docker compose run --rm --tty web rails $@
+shell:
+	@docker compose run --rm web bash -l
