@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  # get 'operations/deposit'
-  # post 'operations/deposit_create'
-  # get 'operations/withdraw'
-  # get 'operations/transfer'
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get 'operations', to: 'operations#index'
 
   get :statements, to: 'statements#index'
@@ -14,7 +11,6 @@ Rails.application.routes.draw do
   end
 
   devise_for :accounts
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   root "operations#index"

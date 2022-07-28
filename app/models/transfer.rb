@@ -6,15 +6,6 @@ class Transfer < Transaction
   validate :amount_greater_than_fee
   validate :is_not_same_account
 
-  def update_account_balance
-    transfer_amount = amount - fee
-    account.with_lock {
-      account.withdraws.create(amount: fee)
-      account.withdraws.create(amount: transfer_amount)
-      to_account_number.deposits.create(amount: transfer_amount)
-    }
-  end
-
   def fee(time=Time.now.in_time_zone)
     fee = 0.to_d
     if fee_time_in_range?(time)
@@ -46,6 +37,17 @@ class Transfer < Transaction
 
   def to_account_number
     @to_account_number
+  end
+
+  private
+  def update_account_balance
+    transfer_amount = amount - fee
+    account.with_lock do
+      account.withdraws.create(amount: fee)
+      account.withdraws.create(amount: transfer_amount)
+      to_account_number.deposits.create(amount: transfer_amount)
+      self.balance = account.reload.balance
+    end
   end
 
   def amount_greater_than_fee
