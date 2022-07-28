@@ -1,0 +1,55 @@
+<div class="w-full">
+  <div>
+    <%= form_with scope: "statements", url: "/statements", method: :get, class: 'flex flex-row justify-around w-full' do |f| %>      
+    <div class="form-control">
+      <label class="label">
+        <span class="label-text">Start Date</span>
+      </label>
+      <%= date_field_tag 'filter_from', @filter_from, {class: 'input'} %>
+    </div>
+    <div class="form-control">  
+      <label class="label">
+        <span class="label-text">End Date</span>
+      </label>
+      <%= date_field_tag 'filter_to', @filter_to, {class: 'input'} %>
+    </div>
+    <div class="form-control">
+      <%= f.submit "Filter", disable_with: 'Submiting...', class: 'input btn btn-ghost' %>
+    </div>
+    <% end %>
+  </div>
+  <table class="table table-compact w-full">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.id %></td>
+        <td><%= transaction.created_at.to_formatted_s(:db) %></td>
+        <td><%= transaction.type %></td>
+        <td><%= number_to_currency(transaction.amount) %></td>
+        <td><%= number_to_currency(transaction.balance) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Balance</th>
+      </tr>
+    </tfoot>
+  </table>
+  <div>
+    <%= paginate @transactions, remote: true %>
+  </div>
+</div>

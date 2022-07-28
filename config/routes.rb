@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # get 'operations/transfer'
   get 'operations', to: 'operations#index'
 
+  get :statements, to: 'statements#index'
+
   namespace :operations do
     resources :deposits, only: [:show, :new, :create]
     resources :withdraws, only: [:show, :new, :create]
