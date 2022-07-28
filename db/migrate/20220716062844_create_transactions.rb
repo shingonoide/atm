@@ -4,6 +4,7 @@ class CreateTransactions < ActiveRecord::Migration[7.0]
       t.bigint :account_account_number, null: false
       t.string :type
       t.decimal :amount
+      t.decimal :balance
 
       t.datetime :created_at, null: false
     end

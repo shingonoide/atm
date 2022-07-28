@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_22_223017) do
     t.bigint "account_account_number", null: false
     t.string "type"
     t.decimal "amount"
+    t.decimal "balance"
     t.datetime "created_at", null: false
   end
 
