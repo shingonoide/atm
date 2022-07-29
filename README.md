@@ -11,23 +11,26 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version: ruby-3.1.2
+* Ruby version
+  - Ruby 3.1.2
 
-* System dependencies: docker
+* System dependencies
+  - Docker
 
 * Configuration
+  - Setup time zone 'America/Sao_Paulo'
 
 * Database creation
+  - make shell
+  - bin/rails db:create
 
 * Database initialization
+  - make shell
+  - bin/rails db:create
 
 * How to run the test suite
+  - make test
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 # Application Notes for Development
 
@@ -38,8 +41,8 @@ Things you may want to cover:
 - [x] Make Deposits
 - [x] Make Withdraws
 - [x] Make Transfers between accounts
-- [ ] Request for account balance
-- [ ] Request for account statement filtered by initial and end date.
+- [x] Request for account balance
+- [x] Request for account statement filtered by initial and end date.
 
 ### Rules:
 - [x] The account can't be destroyed
@@ -60,7 +63,7 @@ Things you may want to cover:
 - Transactions
   - fields:
     - account_id
-    - type (DEPOSIT,WITHDRAW)
+    - type (DEPOSIT,WITHDRAW,TRANSFER)
     - amount
     - created_at
 
