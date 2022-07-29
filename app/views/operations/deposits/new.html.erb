@@ -1,8 +1,34 @@
-<h1>Deposit</h1>
-<p>Deposit a amount to specific account_number</p>
+<div class="card card-normal w-96 bg-base-300 rounded-box place-items-center shadow-xl p-1">
+  <div class="card-title">Deposit</div>
+  <p>Deposit to account number</p>
+  <div class="card-body h-fit">
+    <%= form_with scope: "deposit", url: "/operations/deposits" do |form| %>
+      <% if @deposit.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(@deposit.errors.count, "error") %> prohibited this deposit from being saved:</h2>
 
-<%= render "form", deposit: @deposit %>
-
-<div>
-  <%= link_to "Back to operations", operations_path %>
+          <ul>
+            <% @deposit.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-control w-full max-w-xs p-2">
+        <%= form.label :account_number, class: 'label-text' %>
+        <%= form.text_field :account_number, class: 'text-right input input-bordered input-ghost w-full max-w-xs' %>
+      </div>
+      
+      <div class="form-control w-full max-w-xs p-2">
+        <%= form.label :amount, class: 'label-text' %>
+        <%= form.text_field :amount, step: 0.01, class: 'text-right input input-bordered input-ghost w-full max-w-xs' %>
+      </div>
+      <div class="card-actions">
+        <div class="form-control w-full max-w-xs p-2">
+          <%= form.submit "Deposit", class: 'btn btn-primary' %>
+          <%= link_to "Back" , operations_path, class: "btn btn-secondary #{ 'hidden' if controller_name == 'operations' }" %>
+        </div> 
+      </div>
+    <% end %>
+  </div>
 </div>

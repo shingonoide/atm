@@ -1,9 +1,18 @@
-<h1>Withdraw #<%= @withdraw.id %></h1>
+<div class="card card-normal bg-base-100 shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title">Withdraw #<%= @withdraw.id %></h2>
+    <div class="stat">
+      <div class="stat-title">Account Deposit</div>
+      <div class="stat-value"><%= @withdraw.account.account_number %></div>
+    </div>
+    <div class="stat">
+      <div class="stat-title">Deposit amount</div>
+      <div class="stat-value">$<%= @withdraw.amount %></div>
+    </div>
+    
+    <div class="card-actions justify-end">
+      <%= link_to "Back", operations_path, class: "btn btn-primary" %>
+    </div>
 
-<p>Account: <%= @withdraw.account.account_number %></p>
-<p>Amount: <%= @withdraw.amount %></p>
-<p>Current Balance: <%= @withdraw.account.balance.to_s %> </p>
-
-<div>
-  <%= link_to "Back to operations", operations_path %>
+  </div>
 </div>

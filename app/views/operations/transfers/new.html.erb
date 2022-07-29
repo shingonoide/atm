@@ -1,8 +1,38 @@
-<h1>Tranfers</h1>
-<p>Transfers your account funds to another account</p>
+<div class="grid card card-normal bg-base-300 rounded-box place-items-center shadow-xl p-1">
+  <div class="card-title">Tranfers</div>
+  <p>Transfers funds to another account</p>
+  <div class="card-body">
+    
+    <%= form_with scope: "transfer", url: "/operations/transfers" do |form| %>
+    <% if @transfer.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@transfer.errors.count, "error") %> prohibited this deposit from being saved:</h2>
 
-<%= render "form", transfer: @transfer %>
+        <ul>
+          <% @transfer.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<div>
-  <%= link_to "Back to operations", operations_path %>
+    <div class="form-control w-full max-w-xs p-2">
+      <%= form.label :to_account_number, class: 'label-text' %>
+      <%= form.text_field :to_account_number, class: 'input input-bordered input-ghost w-full max-w-xs' %>
+    </div>
+
+    <div class="form-control w-full max-w-xs p-2">
+      <%= form.label :amount, class: 'label-text' %>
+      <%= form.text_field :amount, step: 0.01, class: 'input input-bordered input-ghost w-full max-w-xs' %>
+    </div>
+
+    <div class="card-actions">
+      <div class="form-control w-full max-w-xs p-2">
+        <%= form.submit "Transfer", class: 'btn btn-primary' %>
+        <%= link_to "Back" , operations_path, class: "btn btn-secondary #{ 'hidden' if controller_name == 'operations' }" %>
+      </div> 
+    </div>
+    <% end %>
+
+  </div>
 </div>

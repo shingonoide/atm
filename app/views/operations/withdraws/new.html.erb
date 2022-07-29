@@ -1,8 +1,34 @@
-<h1>Withdraw</h1>
-<p>Withdraw a amount from specific account_number</p>
+<div class="grid card card-normal bg-base-300 rounded-box place-items-center shadow-xl p-1">
+  <div class="card-title">Withdraw</div>
+  <p>Withdraw from your account</p>
+  <div class="card-body">
+        
+    <%= form_with scope: "withdraw", url: "/operations/withdraws" do |form| %>
+    <% if @withdraw.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@withdraw.errors.count, "error") %> prohibited this withdraw from being saved:</h2>
 
-<%= render "form", withdraw: @withdraw %>
+        <ul>
+          <% @withdraw.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<div>
-  <%= link_to "Back to operations", operations_path %>
+    <div class="form-control w-full max-w-xs p-2">
+      <%= form.label :amount, class: 'label-text' %>
+      <%= form.text_field :amount, step: 0.01, class: 'text-right  input input-bordered input-ghost w-full max-w-xs' %>
+    </div>
+
+    <div class="card-actions">
+      <div class="form-control w-full max-w-xs p-2">
+        <%= form.submit "Withdraw", class: 'btn btn-primary' %>
+        <%= link_to "Back" , operations_path, class: "btn btn-secondary #{ 'hidden' if controller_name == 'operations' }" %>
+      </div> 
+    </div>
+
+    <% end %>
+
+  </div>
 </div>
